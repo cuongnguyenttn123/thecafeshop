@@ -5,7 +5,7 @@ public class MyWebInitializer extends AbstractAnnotationConfigDispatcherServletI
 
     protected Class<?>[] getRootConfigClasses() {
         return new Class[]{
-
+                PersistenceJPAConfig.class
         };
     }
 
