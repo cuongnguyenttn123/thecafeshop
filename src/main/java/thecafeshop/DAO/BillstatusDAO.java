@@ -84,8 +84,10 @@ public class BillstatusDAO implements BillstatusDAOImp {
 		EntityManager entityManager  = entityManagerFactory.createEntityManager();
 		try {
 			List<Billstatus> billstatus = entityManager
-					.createQuery("from Billstatus b WHERE b.isdelete =:isdelete", Billstatus.class)
-					.setParameter("isdelete", this.IS_NOT_DELETE).setFirstResult(startPosition*this.MAX_RESULTS).setMaxResults(this.MAX_RESULTS).getResultList();
+					.createQuery("from Billstatus b WHERE b.isdelete =?1", Billstatus.class)
+					.setParameter(1, this.IS_NOT_DELETE)
+					.setFirstResult(startPosition*this.MAX_RESULTS)
+					.setMaxResults(this.MAX_RESULTS).getResultList();
 			return billstatus;
 		} catch (Exception e) {
 			return null;
