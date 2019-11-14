@@ -52,7 +52,7 @@ public class ImportbilldetailDAO implements ImportbilldetailDAOImp {
 					.getResultList();
 			return importbilldetails;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -67,7 +67,7 @@ public class ImportbilldetailDAO implements ImportbilldetailDAOImp {
 					.setParameter("id", id).setParameter("isdelete", this.IS_NOT_DELETE).getSingleResult();
 			return importbilldetail;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -79,6 +79,7 @@ public class ImportbilldetailDAO implements ImportbilldetailDAOImp {
 			importbilldetailRepository.delete(importbilldetail);
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -90,6 +91,7 @@ public class ImportbilldetailDAO implements ImportbilldetailDAOImp {
 			entityManager.merge(importbilldetail);
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -115,7 +117,7 @@ public class ImportbilldetailDAO implements ImportbilldetailDAOImp {
 					.setParameter("isdelete", this.IS_NOT_DELETE).getSingleResult();
 			return true;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return false;
 		}
 	}

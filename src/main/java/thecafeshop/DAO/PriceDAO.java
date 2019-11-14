@@ -58,7 +58,7 @@ public class PriceDAO implements PriceDAOImp {
 					.getSingleResult();
 			return Price;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -73,6 +73,7 @@ public class PriceDAO implements PriceDAOImp {
 					.setParameter("isdelete", this.IS_NOT_DELETE).setMaxResults(1).getSingleResult();
 			return price;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -87,6 +88,7 @@ public class PriceDAO implements PriceDAOImp {
 					.setParameter("isdelete", this.IS_NOT_DELETE).setMaxResults(1).getSingleResult();
 			return price.getPrice();
 		} catch (Exception e) {
+			e.printStackTrace();
 			return 0;
 		}
 	}

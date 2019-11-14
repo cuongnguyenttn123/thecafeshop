@@ -9,21 +9,26 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
 import thecafeshop.DTO.BillStatusDTO;
+import thecafeshop.common.Common;
 import thecafeshop.entity.Billstatus;
+import thecafeshop.service.BillService;
 import thecafeshop.service.BillstatusService;
-import thecafeshop.service.Common;
 
 
 @Controller
-@RequestMapping("")
 public class BillStatusController extends Common {
 
 	@Autowired
 	BillstatusService billstatusService;
-
-
+	@Autowired
+	BillService billService;
 
 	@GetMapping(value = "/admin/bill-status")
 	public String index(ModelMap modelMap, HttpSession httpSession) {
@@ -33,6 +38,7 @@ public class BillStatusController extends Common {
 			totalPage++;
 		}
 		modelMap.addAttribute("totalPage", totalPage);
+
 		return "/admin/management-system/bill-status";
 	}
 
@@ -47,9 +53,9 @@ public class BillStatusController extends Common {
 			billStatusDTO.setBillstatus(billstatus);
 
 			billStatusDTO.setCanDelete(false);
-//			if (billService.checkExistBillStatus(billstatus.getBillstatusid())) {
-//				billStatusDTO.setCanDelete(true);
-//			}
+			if (billService.checkExistBillStatus(billstatus.getBillstatusid())) {
+				billStatusDTO.setCanDelete(true);
+			}
 			dtos.add(billStatusDTO);
 		}
 

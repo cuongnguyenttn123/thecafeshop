@@ -43,12 +43,12 @@ public class SalaryDAO implements SalaryDAOImp {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
 			Salary salary = entityManager
-					.createQuery("FROM Salary s WHERE s.employeeid = :employeeid and s.isdelete =:isdelete ", Salary.class)
+					.createQuery("FROM Salary s WHERE s.employeeid =:employeeid and s.isdelete =:isdelete ", Salary.class)
 					.setParameter("employeeid", employeeid).setParameter("isdelete", this.IS_NOT_DELETE)
 					.getSingleResult();
 			return salary;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -60,6 +60,7 @@ public class SalaryDAO implements SalaryDAOImp {
 			salaryRepository.delete(salary);
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -85,12 +86,12 @@ public class SalaryDAO implements SalaryDAOImp {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
 			Salary salary = entityManager.createQuery(
-					"FROM Salary s WHERE s.employee =:employee AND s.startdate <= now() AND s.enddate is null AND s.isdelete =: isdelete ORDER BY s.startdate DESC",
+					"FROM Salary s WHERE s.employee =:employee AND s.startdate <= now() AND s.enddate is null AND s.isdelete =:isdelete ORDER BY s.startdate DESC",
 					Salary.class).setParameter("employee", new Employee(employeeid))
 					.setParameter("isdelete", this.IS_NOT_DELETE).getSingleResult();
 			return salary.getSalaryonhour();
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return 0;
 		}
 	}

@@ -1,4 +1,4 @@
-package thecafeshop.service;
+package thecafeshop.common;
 
 import thecafeshop.DAOImp.CommonDAOImp;
 
@@ -27,7 +27,7 @@ public class Common implements CommonDAOImp {
 	/**
 	 * check logined
 	 * 
-	 * @param HttpSession
+	 * @param
 	 */
 	public Boolean checkLogIn(HttpSession httpSession) {
 		if (httpSession.getAttribute("emId") == null) {

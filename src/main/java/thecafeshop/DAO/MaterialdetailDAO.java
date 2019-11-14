@@ -33,6 +33,7 @@ public class MaterialdetailDAO implements MaterialdetailDAOImp {
 			materialdetailRepository.save(materialdetail);
 			return materialdetail.getMaterialdetailid();
 		} catch (Exception e) {
+			e.printStackTrace();
 			return -1;
 		}
 	}
@@ -48,7 +49,7 @@ public class MaterialdetailDAO implements MaterialdetailDAOImp {
 					.setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 			return materialdetails;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -64,7 +65,7 @@ public class MaterialdetailDAO implements MaterialdetailDAOImp {
 					.setParameter("isdelete", this.IS_NOT_DELETE).getSingleResult();
 			return materialdetail;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -76,6 +77,7 @@ public class MaterialdetailDAO implements MaterialdetailDAOImp {
 			materialdetailRepository.deleteById(materialdetailid);
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -110,7 +112,7 @@ public class MaterialdetailDAO implements MaterialdetailDAOImp {
 			}
 			return false;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -121,12 +123,12 @@ public class MaterialdetailDAO implements MaterialdetailDAOImp {
 		try {
 
 			List<Materialdetail> materialdetails = entityManager.createQuery(
-					"FROM Materialdetail m WHERE m.quantity > 0 AND m.material.materialid =: materialid AND m.isdelete =: isdelete ORDER BY m.materialdetailid ASC",
+					"FROM Materialdetail m WHERE m.quantity > 0 AND m.material.materialid =:materialid AND m.isdelete =:isdelete ORDER BY m.materialdetailid ASC",
 					Materialdetail.class).setParameter("materialid", materialid)
 					.setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 			return materialdetails;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -137,7 +139,7 @@ public class MaterialdetailDAO implements MaterialdetailDAOImp {
 		try {
 
 			List<Materialdetail> materialdetails = entityManager.createQuery(
-					"FROM Materialdetail m WHERE m.quantity > 0 AND m.material.materialid =: materialid AND m.isdelete =: isdelete ORDER BY m.materialdetailid ASC",
+					"FROM Materialdetail m WHERE m.quantity > 0 AND m.material.materialid =:materialid AND m.isdelete =:isdelete ORDER BY m.materialdetailid ASC",
 					Materialdetail.class).setParameter("materialid", materialid)
 					.setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 			if (materialdetails.size() <= 0) {
@@ -149,7 +151,7 @@ public class MaterialdetailDAO implements MaterialdetailDAOImp {
 			}
 			return total;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return 0;
 		}
 	}
@@ -158,12 +160,12 @@ public class MaterialdetailDAO implements MaterialdetailDAOImp {
 	public List<Materialdetail> search(String materialdetailid, String name) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
-			String hql = "FROM Materialdetail m WHERE m.quantity > 0 AND m.isdelete =: isdelete";
+			String hql = "FROM Materialdetail m WHERE m.quantity > 0 AND m.isdelete =:isdelete";
 			if (materialdetailid != "") {
-				hql = hql + " AND m.materialdetailid =: materialdetailid ";
+				hql = hql + " AND m.materialdetailid =:materialdetailid ";
 			}
 			if (name != "") {
-				hql = hql + " AND m.material.name =: name ";
+				hql = hql + " AND m.material.name =:name ";
 			}
 			Query query = (Query) entityManager.createQuery(hql, Materialdetail.class);
 			query.setParameter("isdelete", this.IS_NOT_DELETE);
@@ -177,7 +179,7 @@ public class MaterialdetailDAO implements MaterialdetailDAOImp {
 			return materialdetails;
 			
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 

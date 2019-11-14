@@ -47,7 +47,7 @@ public class VoucherDAO implements VoucherDAOImp {
 					.setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 			return vouchers;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -58,7 +58,7 @@ public class VoucherDAO implements VoucherDAOImp {
 			Voucher voucher = voucherRepository.findById(voucherid).get();
 			return voucher;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -73,7 +73,7 @@ public class VoucherDAO implements VoucherDAOImp {
 
 			return voucher;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -90,7 +90,7 @@ public class VoucherDAO implements VoucherDAOImp {
 			}
 			return true;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -131,7 +131,7 @@ public class VoucherDAO implements VoucherDAOImp {
 					.setMaxResults(MAX_RESULTS).getResultList();
 			return vouchers;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}

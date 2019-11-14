@@ -48,7 +48,7 @@ public class SupplierDAO implements SupplierDAOImp {
 					.setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 			return suppliers;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -64,7 +64,7 @@ public class SupplierDAO implements SupplierDAOImp {
 					.getSingleResult();
 			return supplier;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -106,7 +106,7 @@ public class SupplierDAO implements SupplierDAOImp {
 					.setMaxResults(MAX_RESULTS).getResultList();
 			return suppliers;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -122,7 +122,7 @@ public class SupplierDAO implements SupplierDAOImp {
 					.getSingleResult();
 			return true;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return false;
 		}
 	}

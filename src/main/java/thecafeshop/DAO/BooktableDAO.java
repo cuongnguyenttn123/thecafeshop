@@ -39,7 +39,7 @@ public class BooktableDAO implements BooktableDAOImp {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
 			List<Booktable> booktables = entityManager
-					.createQuery("FROM Booktable b WHERE b.isdelete =: isdelete", Booktable.class)
+					.createQuery("FROM Booktable b WHERE b.isdelete =:isdelete", Booktable.class)
 					.setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 			return booktables;
 		} catch (Exception e) {
@@ -52,7 +52,7 @@ public class BooktableDAO implements BooktableDAOImp {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
 			Booktable booktable = entityManager
-					.createQuery("FROM Booktable b WHERE BooktableId =:booktableId AND b.isdelete =: isdelete",
+					.createQuery("FROM Booktable b WHERE BooktableId =:booktableId AND b.isdelete =:isdelete",
 							Booktable.class)
 					.setParameter("booktableId", booktableId).setParameter("isdelete", this.IS_NOT_DELETE)
 					.getSingleResult();
@@ -85,7 +85,7 @@ public class BooktableDAO implements BooktableDAOImp {
 		try {
 			List<Booktable> booktables = entityManager
 					.createQuery(
-							"FROM Booktable b WHERE b.id.dinnertableid =: dinnertableid AND b.isdelete =: isdelete",
+							"FROM Booktable b WHERE b.id.dinnertableid =:dinnertableid AND b.isdelete =:isdelete",
 							Booktable.class)
 					.setParameter("dinnertableid", dinnertableid).setParameter("isdelete", this.IS_NOT_DELETE)
 					.getResultList();

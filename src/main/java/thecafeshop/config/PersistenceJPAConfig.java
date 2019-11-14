@@ -63,7 +63,7 @@ public class PersistenceJPAConfig {
         return hibernateProperties;
     }
 
-    @Bean
+    @Bean(name = "dataSource")
     public DataSource dataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
@@ -74,7 +74,8 @@ public class PersistenceJPAConfig {
     }
 
 
-    @Bean
+    @Autowired
+    @Bean(name = "transactionManager")
     public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(emf);

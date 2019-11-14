@@ -42,7 +42,7 @@ public class TablestatusDAO implements TablestatusDAOImp {
 			List<Tablestatus> tablestatus = tablestatusRepository.findAll();
 			return tablestatus;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -54,7 +54,7 @@ public class TablestatusDAO implements TablestatusDAOImp {
 			Tablestatus tablestatus = tablestatusRepository.findById(tablestatusid).get();
 			return tablestatus;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -65,6 +65,7 @@ public class TablestatusDAO implements TablestatusDAOImp {
 			tablestatusRepository.deleteById(tablestatusid);
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -75,6 +76,7 @@ public class TablestatusDAO implements TablestatusDAOImp {
 			tablestatusRepository.save(tablestatus);
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -86,12 +88,12 @@ public class TablestatusDAO implements TablestatusDAOImp {
 
 		try {
 			Tablestatus tablestatus = session
-					.createQuery("FROM Tablestatus tb WHERE tb.name =: name AND tb.isdelete =: isdelete",
+					.createQuery("FROM Tablestatus tb WHERE tb.name =:name AND tb.isdelete =:isdelete",
 							Tablestatus.class)
 					.setParameter("name", name).setParameter("isdelete", this.IS_NOT_DELETE).getSingleResult();
 			return true;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -102,11 +104,11 @@ public class TablestatusDAO implements TablestatusDAOImp {
 		Session session = entityManager.unwrap(Session.class);
 		try {
 			List<Tablestatus> tablestatus = session
-					.createQuery("FROM Tablestatus tb WHERE tb.isdelete =: isdelete", Tablestatus.class)
+					.createQuery("FROM Tablestatus tb WHERE tb.isdelete =:isdelete", Tablestatus.class)
 					.setFirstResult(startPosition*MAX_RESULTS).setMaxResults(MAX_RESULTS).setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 			return tablestatus;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}

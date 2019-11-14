@@ -49,7 +49,7 @@ public class EmloyeeDAO implements EmployeeDAOImp {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
 			Employee employee = entityManager.createQuery(
-					"FROM Employee e WHERE e.usename = :username AND e.password = :password AND e.isdelete =: isdelete",
+					"FROM Employee e WHERE e.usename = :username AND e.password =:password AND e.isdelete =:isdelete",
 					Employee.class).setParameter("username", username).setParameter("password", password)
 					.setParameter("isdelete", this.IS_NOT_DELETE).getSingleResult();
 			return employee.getEmployeeid();

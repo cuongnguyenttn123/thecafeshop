@@ -33,7 +33,7 @@ public class ImageDAO implements ImageDAOImp {
 			
 			return images;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}

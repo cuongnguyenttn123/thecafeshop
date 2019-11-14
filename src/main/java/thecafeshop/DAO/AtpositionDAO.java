@@ -42,13 +42,13 @@ public class AtpositionDAO implements AtpositionDAOImp {
 		try {
 
 			Atposition atposition = entityManager
-					.createQuery("FROM Atposition a WHERE a.AtpositionId = :atpositionId AND e.isdelete =: isdelete",
+					.createQuery("FROM Atposition a WHERE a.AtpositionId =:atpositionId AND e.isdelete =:isdelete",
 							Atposition.class)
 					.setParameter("atpositionId", atpositionId).setParameter("isdelete", this.IS_NOT_DELETE)
 					.getSingleResult();
 			return atposition;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -82,7 +82,7 @@ public class AtpositionDAO implements AtpositionDAOImp {
 		try {
 
 			List<Atposition> atpositions = entityManager
-					.createQuery("FROM Atposition a WHERE a.id = :id AND e.isdelete =: isdelete",
+					.createQuery("FROM Atposition a WHERE a.id =:id AND e.isdelete =:isdelete",
 							Atposition.class)
 					.setParameter("id", positionid).setParameter("isdelete", this.IS_NOT_DELETE)
 					.getResultList();

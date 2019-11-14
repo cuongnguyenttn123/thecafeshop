@@ -51,7 +51,7 @@ public class ImportBillDAO implements ImportBillDAOImp {
 					.setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 			return importbills;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -66,7 +66,7 @@ public class ImportBillDAO implements ImportBillDAOImp {
 					.setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 			return importbills;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -78,7 +78,7 @@ public class ImportBillDAO implements ImportBillDAOImp {
 			Importbill importbill = importbillRepository.findById(importbillid).get();
 			return importbill;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -90,6 +90,7 @@ public class ImportBillDAO implements ImportBillDAOImp {
 			importbillRepository.deleteById(importbillid);
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -144,7 +145,7 @@ public class ImportBillDAO implements ImportBillDAOImp {
 
 			return importbills.size();
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return 0;
 		}
 	}
@@ -167,7 +168,7 @@ public class ImportBillDAO implements ImportBillDAOImp {
 			}
 			return total;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return 0;
 		}
 	}
@@ -183,7 +184,7 @@ public class ImportBillDAO implements ImportBillDAOImp {
 
 			return importbills.size();
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return 0;
 		}
 	}
@@ -206,7 +207,7 @@ public class ImportBillDAO implements ImportBillDAOImp {
 			}
 			return total; 
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return 0;
 		}
 	}
@@ -222,7 +223,7 @@ public class ImportBillDAO implements ImportBillDAOImp {
 
 			return importbills.size();
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return 0;
 		}
 	}

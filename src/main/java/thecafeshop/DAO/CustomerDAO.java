@@ -44,7 +44,7 @@ public class CustomerDAO implements CustomerDAOImp {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
 			List<Customer> customers = entityManager
-					.createQuery("FROM Customer c WHERE c.isdelete =: isdelete", Customer.class)
+					.createQuery("FROM Customer c WHERE c.isdelete =:isdelete", Customer.class)
 					.setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 			return customers;
 		} catch (Exception e) {
@@ -58,7 +58,7 @@ public class CustomerDAO implements CustomerDAOImp {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
 			Customer customer = entityManager
-					.createQuery("FROM Customer c WHERE c.customerid = :customerid AND c.isdelete =: isdelete",
+					.createQuery("FROM Customer c WHERE c.customerid =:customerid AND c.isdelete =:isdelete",
 							Customer.class)
 					.setParameter("customerid", customerid).setParameter("isdelete", this.IS_NOT_DELETE)
 					.getSingleResult();

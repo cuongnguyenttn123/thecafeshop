@@ -51,6 +51,7 @@ public class BillstatusDAO implements BillstatusDAOImp {
 			Billstatus billstatus = billstatusRepository.findById(billstatusid).get();
 			return billstatus;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}

@@ -50,7 +50,7 @@ public class ExportbilldetailDAO implements ExportbilldetailDAOImp {
 					.getResultList();
 			return exportbilldetails;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -65,7 +65,7 @@ public class ExportbilldetailDAO implements ExportbilldetailDAOImp {
 					.setParameter("id", id).setParameter("isdelete", this.IS_NOT_DELETE).getSingleResult();
 			return exportbilldetail;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -76,6 +76,7 @@ public class ExportbilldetailDAO implements ExportbilldetailDAOImp {
 			exportbilldetailRepository.delete(exportbilldetail);
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -87,6 +88,7 @@ public class ExportbilldetailDAO implements ExportbilldetailDAOImp {
 			entityManager.merge(exportbilldetail);
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -107,12 +109,12 @@ public class ExportbilldetailDAO implements ExportbilldetailDAOImp {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
 			Exportbilldetail exportbilldetail = entityManager.createQuery(
-					"FROM Exportbilldetail e WHERE e.id.materialdetailid =:materialdetailid AND e.isdelete =: isdelete",
+					"FROM Exportbilldetail e WHERE e.id.materialdetailid =:materialdetailid AND e.isdelete =:isdelete",
 					Exportbilldetail.class).setParameter("materialdetailid", materialdetailid)
 					.setParameter("isdelete", this.IS_NOT_DELETE).getSingleResult();
 			return true;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return false;
 		}
 	}

@@ -46,7 +46,7 @@ public class MaterialDAO implements MaterialDAOImp {
 					.setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 			return materials;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -58,6 +58,7 @@ public class MaterialDAO implements MaterialDAOImp {
 			Material material = materialRepository.findById(materialid).get();
 			return material;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -69,6 +70,7 @@ public class MaterialDAO implements MaterialDAOImp {
 			materialRepository.deleteById(materialid);
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -98,7 +100,7 @@ public class MaterialDAO implements MaterialDAOImp {
 					.setMaxResults(MAX_RESULTS).getResultList();
 			return materials;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -114,6 +116,7 @@ public class MaterialDAO implements MaterialDAOImp {
 				.getSingleResult();
 		return true;
 	} catch (Exception e) {
+		e.printStackTrace();
 		return false;
 	}
 	}

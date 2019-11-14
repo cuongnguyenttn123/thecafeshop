@@ -56,12 +56,12 @@ public class BilldetailDAO implements BilldetailDAOImp {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
 			List<Billdetail> billdetails = entityManager
-					.createQuery("FROM Billdetail b WHERE b.id.billid =:billid AND b.isdelete =: isdelete",
+					.createQuery("FROM Billdetail b WHERE b.id.billid =:billid AND b.isdelete =:isdelete",
 							Billdetail.class)
 					.setParameter("billid", billid).setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 			return billdetails;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -71,10 +71,11 @@ public class BilldetailDAO implements BilldetailDAOImp {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
 			Billdetail billdetail = entityManager
-					.createQuery("FROM Billdetail b WHERE b.id =:id AND b.isdelete =: isdelete", Billdetail.class)
+					.createQuery("FROM Billdetail b WHERE b.id =:id AND b.isdelete =:isdelete", Billdetail.class)
 					.setParameter("id", billdetailId).setParameter("isdelete", this.IS_NOT_DELETE).getSingleResult();
 			return billdetail;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -87,6 +88,7 @@ public class BilldetailDAO implements BilldetailDAOImp {
 			entityManager.remove(billdetail);
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -111,7 +113,7 @@ public class BilldetailDAO implements BilldetailDAOImp {
 
 			// lấy số lượng của sản phẩm
 			Billdetail billdetail = entityManager
-					.createQuery("FROM Billdetail b WHERE b.id =: id AND  b.isdelete =: isdelete", Billdetail.class)
+					.createQuery("FROM Billdetail b WHERE b.id =:id AND  b.isdelete =:isdelete", Billdetail.class)
 					.setParameter("id", billdetailId).setParameter("isdelete", this.IS_NOT_DELETE).getSingleResult();
 
 			// giá = số lượng * giá của sản phẩm
@@ -134,7 +136,7 @@ public class BilldetailDAO implements BilldetailDAOImp {
 
 		try {
 			Price price = entityManager.createQuery(
-					"FROM Price p WHERE p.product = :product AND p.isdelete =: isdelete AND p.startdatetime <=: startdatetime ORDER BY p.startdatetime DESC",
+					"FROM Price p WHERE p.product =:product AND p.isdelete =:isdelete AND p.startdatetime <=:startdatetime ORDER BY p.startdatetime DESC",
 					Price.class).setParameter("product", new Product(productid))
 					.setParameter("startdatetime", startdatetime).setParameter("isdelete", this.IS_NOT_DELETE)
 					.setMaxResults(1).getSingleResult();

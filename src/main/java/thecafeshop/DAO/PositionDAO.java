@@ -48,7 +48,7 @@ public class PositionDAO implements PositionDAOImp {
 					.setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 			return positions;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -103,7 +103,7 @@ public class PositionDAO implements PositionDAOImp {
 					.getSingleResult();
 			return position;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -119,7 +119,7 @@ public class PositionDAO implements PositionDAOImp {
 					.setMaxResults(MAX_RESULTS).getResultList();
 			return positions;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}

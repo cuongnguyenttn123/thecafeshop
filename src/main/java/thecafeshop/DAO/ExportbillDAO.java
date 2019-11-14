@@ -46,7 +46,7 @@ public class ExportbillDAO implements ExportbillDAOImp {
 					.setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 			return exportbills;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -59,7 +59,7 @@ public class ExportbillDAO implements ExportbillDAOImp {
 			Exportbill exportbill = exportbillRepository.findById(exportbillid).get();
 			return exportbill;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -70,6 +70,7 @@ public class ExportbillDAO implements ExportbillDAOImp {
 			exportbillRepository.deleteById(exportbillid);
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}

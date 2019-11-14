@@ -46,6 +46,7 @@ public class ScheduleDAO implements ScheduleDAOImp {
 					.setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 			return schedules;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -57,6 +58,7 @@ public class ScheduleDAO implements ScheduleDAOImp {
 			Schedule schedule = scheduleRepository.findById(scheduleid).get();
 			return schedule;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -68,6 +70,7 @@ public class ScheduleDAO implements ScheduleDAOImp {
 			scheduleRepository.deleteById(scheduleid);
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -81,6 +84,7 @@ public class ScheduleDAO implements ScheduleDAOImp {
 			entityManager.getTransaction().commit();
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			entityManager.getTransaction().rollback();
 			return false;
 		} finally {
@@ -98,6 +102,7 @@ public class ScheduleDAO implements ScheduleDAOImp {
 					.setMaxResults(MAX_RESULTS).getResultList();
 			return schedules;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}

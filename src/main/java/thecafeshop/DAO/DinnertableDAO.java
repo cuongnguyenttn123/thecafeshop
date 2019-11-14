@@ -1,7 +1,5 @@
 package thecafeshop.DAO;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -10,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import thecafeshop.DAOImp.DinnertableDAOImp;
 import thecafeshop.entity.Dinnertable;
 import thecafeshop.reponsitory.DinnertableRepository;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import java.util.ArrayList;
@@ -78,10 +75,15 @@ public class DinnertableDAO implements DinnertableDAOImp {
 	public Boolean editDinnertable(Dinnertable dinnertable) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
-			entityManager.remove(dinnertable);
+			entityManager.getTransaction().begin();
+			entityManager.merge(dinnertable);
+			entityManager.getTransaction().commit();
 			return true;
 		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
 			return false;
+		} finally {
+			entityManager.close();
 		}
 	}
 
@@ -105,12 +107,12 @@ public class DinnertableDAO implements DinnertableDAOImp {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
 			Dinnertable dinnertable = entityManager
-					.createQuery("FROM Dinnertable d WHERE d.name LIKE: name AND d.isdelete =: isdelete",
+					.createQuery("FROM Dinnertable d WHERE d.name LIKE =:name AND d.isdelete =:isdelete",
 							Dinnertable.class)
 					.setParameter("name", name).setParameter("isdelete", this.IS_NOT_DELETE).getSingleResult();
 			return true;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -130,7 +132,7 @@ public class DinnertableDAO implements DinnertableDAOImp {
 			
 			return integers;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -140,7 +142,7 @@ public class DinnertableDAO implements DinnertableDAOImp {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
 			List<Dinnertable> dinnertables = entityManager
-					.createQuery("FROM Dinnertable d WHERE d.tablestatus.tablestatusid = 5 AND d.isdelete =: isdelete", Dinnertable.class)
+					.createQuery("FROM Dinnertable d WHERE d.tablestatus.tablestatusid = 5 AND d.isdelete =:isdelete", Dinnertable.class)
 					.setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 			return dinnertables;
 		} catch (Exception e) {

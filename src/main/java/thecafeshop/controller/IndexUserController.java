@@ -20,7 +20,7 @@ import thecafeshop.entity.Product;
 import thecafeshop.reponsitory.CategoryproductRepository;
 import thecafeshop.reponsitory.PriceRepository;
 import thecafeshop.reponsitory.ProductRepository;
-import thecafeshop.service.Common;
+import thecafeshop.common.Common;
 
 @Controller
 @RequestMapping("")

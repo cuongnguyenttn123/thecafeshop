@@ -53,7 +53,7 @@ public class RegisterDAO implements RegisterDAOImp {
 					.getSingleResult();
 			return register;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -69,7 +69,7 @@ public class RegisterDAO implements RegisterDAOImp {
 					.getResultList();
 			return registers;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -105,7 +105,7 @@ public class RegisterDAO implements RegisterDAOImp {
 		try {
 			return true;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -121,7 +121,7 @@ public class RegisterDAO implements RegisterDAOImp {
 			return registers;
 
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}

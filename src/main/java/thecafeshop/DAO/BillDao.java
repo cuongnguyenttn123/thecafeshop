@@ -255,7 +255,7 @@ public class BillDao implements BillDAOImp {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
             List<Bill> bills = entityManager.createQuery(
-                    "FROM Bill b WHERE  WEEK(b.enddate) =: tuan AND b.billstatus.billstatusid = 'DTT' AND b.isdelete =: isdelete",
+                    "FROM Bill b WHERE  WEEK(b.enddate) =:tuan AND b.billstatus.billstatusid = 'DTT' AND b.isdelete =:isdelete",
                     Bill.class)
                     .setParameter("tuan", tuan)
                     .setParameter("isdelete", this.IS_NOT_DELETE)
@@ -272,7 +272,7 @@ public class BillDao implements BillDAOImp {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
             List<Bill> bills = entityManager.createQuery(
-                    "FROM Bill b WHERE  MONTH(b.enddate) =: thang AND b.billstatus.billstatusid = 'DTT' AND b.isdelete =: isdelete",
+                    "FROM Bill b WHERE  MONTH(b.enddate) =:thang AND b.billstatus.billstatusid = 'DTT' AND b.isdelete =:isdelete",
                     Bill.class)
                     .setParameter("thang", thang)
                     .setParameter("isdelete", this.IS_NOT_DELETE)
@@ -294,7 +294,7 @@ public class BillDao implements BillDAOImp {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
             List<Bill> bills = entityManager.createQuery(
-                    "FROM Bill b WHERE  MONTH(b.enddate) =: thang AND b.billstatus.billstatusid = 'DTT' AND b.isdelete =: isdelete",
+                    "FROM Bill b WHERE  MONTH(b.enddate) =:thang AND b.billstatus.billstatusid = 'DTT' AND b.isdelete =:isdelete",
                     Bill.class)
                     .setParameter("thang", thang)
                     .setParameter("isdelete", this.IS_NOT_DELETE)

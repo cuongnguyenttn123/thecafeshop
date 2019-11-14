@@ -64,15 +64,15 @@ public class ProductDAO implements ProductDAOImp {
 			String isHotDeal, String priceAZ, String priceZA, String productid) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
-			String hql = "FROM Product p WHERE p.isdelete =: isdelete";
+			String hql = "FROM Product p WHERE p.isdelete =:isdelete";
 			if (categoryproductid != null) {
-				hql = hql + " AND p.categoryproduct =: categoryproduct ";
+				hql = hql + " AND p.categoryproduct =:categoryproduct ";
 			}
 			if (strSearch != null) {
-				hql = hql + " AND p.name = :name ";
+				hql = hql + " AND p.name =:name ";
 			}
 			if (productid != null) {
-				hql = hql + " AND p.productid = :productid ";
+				hql = hql + " AND p.productid =:productid ";
 			}
 //			if (isHotDeal) {
 //				hql = hql + " AND p.categoryproduct =: categoryproduct ";
@@ -99,7 +99,7 @@ public class ProductDAO implements ProductDAOImp {
 			List<Product> products = query.getResultList();
 			return products;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -126,7 +126,7 @@ public class ProductDAO implements ProductDAOImp {
 				return false;
 			}
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -138,6 +138,7 @@ public class ProductDAO implements ProductDAOImp {
 			productRepository.deleteById(productid);
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -166,6 +167,7 @@ public class ProductDAO implements ProductDAOImp {
 					.setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 			return products;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -211,6 +213,7 @@ public class ProductDAO implements ProductDAOImp {
 					.setMaxResults(MAX_RESULTS).getResultList();
 			return products;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}

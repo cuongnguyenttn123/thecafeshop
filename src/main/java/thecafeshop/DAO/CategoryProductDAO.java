@@ -43,7 +43,7 @@ public class CategoryProductDAO implements CategoryProductDAOImp {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
 			List<Categoryproduct> liCategoryproducts = entityManager
-					.createQuery("FROM Categoryproduct c WHERE c.isdelete = :isdelete", Categoryproduct.class)
+					.createQuery("FROM Categoryproduct c WHERE c.isdelete =:isdelete", Categoryproduct.class)
 					.setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 			return liCategoryproducts;
 		} catch (Exception e) {
@@ -57,7 +57,7 @@ public class CategoryProductDAO implements CategoryProductDAOImp {
 		try {
 
 			Categoryproduct categoryproduct = entityManager.createQuery(
-					"FROM Categoryproduct cp WHERE cp.categoryproductid = :categoryproductid and cp.isdelete =: isdelete",
+					"FROM Categoryproduct cp WHERE cp.categoryproductid =:categoryproductid and cp.isdelete =:isdelete",
 					Categoryproduct.class).setParameter("categoryproductid", categoryproductid)
 					.setParameter("isdelete", this.IS_NOT_DELETE).getSingleResult();
 			return categoryproduct;
@@ -95,7 +95,7 @@ public class CategoryProductDAO implements CategoryProductDAOImp {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
 			List<Categoryproduct> liCategoryproducts = entityManager
-					.createQuery("FROM Categoryproduct c WHERE c.isdelete = :isdelete", Categoryproduct.class)
+					.createQuery("FROM Categoryproduct c WHERE c.isdelete =:isdelete", Categoryproduct.class)
 					.setParameter("isdelete", this.IS_NOT_DELETE)
 					.setFirstResult(startPosition * this.MAX_RESULTS).setMaxResults(this.MAX_RESULTS)
 					.getResultList();
